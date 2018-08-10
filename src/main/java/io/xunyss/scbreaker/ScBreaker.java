@@ -9,7 +9,11 @@ import io.xunyss.commons.exec.support.StringOutputHandler;
  */
 public class ScBreaker {
 	
-	static final String HANDLE = "C:\\Portable Programs\\SysinternalsSuite\\handle.exe";
+	// TODO: (OS != Windows) 일 경우 exception 발생시킬 것!
+	
+	
+	static final String HANDLE_EXE = "C:\\Portable Programs\\SysinternalsSuite\\handle.exe";
+	
 	
 	public void handle() {
 		System.out.println("handle");
@@ -20,7 +24,7 @@ public class ScBreaker {
 		processExecutor.setStreamHandler(stringOutputHandler);
 		
 		try {
-			processExecutor.execute(HANDLE);
+			processExecutor.execute(HANDLE_EXE);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
