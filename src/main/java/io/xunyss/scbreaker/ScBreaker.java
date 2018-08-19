@@ -1,7 +1,7 @@
 package io.xunyss.scbreaker;
 
 import io.xunyss.commons.exec.ProcessExecutor;
-import io.xunyss.commons.exec.support.StringOutputHandler;
+import io.xunyss.commons.exec.support.ToStringStreamHandler;
 
 /**
  *
@@ -19,9 +19,9 @@ public class ScBreaker {
 		System.out.println("handle");
 		
 		
-		StringOutputHandler stringOutputHandler = new StringOutputHandler();
+		ToStringStreamHandler toStringStreamHandler = new ToStringStreamHandler();
 		ProcessExecutor processExecutor = new ProcessExecutor();
-		processExecutor.setStreamHandler(stringOutputHandler);
+		processExecutor.setStreamHandler(toStringStreamHandler);
 		
 		try {
 			processExecutor.execute(HANDLE_EXE);
@@ -30,6 +30,6 @@ public class ScBreaker {
 			e.printStackTrace();
 		}
 		
-		System.out.println(stringOutputHandler.getOutputString());
+		System.out.println(toStringStreamHandler.getOutputString());
 	}
 }
