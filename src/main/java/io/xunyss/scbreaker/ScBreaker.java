@@ -16,9 +16,6 @@ public class ScBreaker {
 	
 	
 	public void handle() {
-		System.out.println("handle");
-		
-		
 		ToStringStreamHandler toStringStreamHandler = new ToStringStreamHandler();
 		ProcessExecutor processExecutor = new ProcessExecutor();
 		processExecutor.setStreamHandler(toStringStreamHandler);
