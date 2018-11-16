@@ -9,7 +9,12 @@ import org.junit.Test;
 public class ScBreakerTest {
 
 	@Test
-	public void test() {
+	public void exec() {
+	
+	}
+	
+	@Test
+	public void test() throws Exception {
 		ScBreaker scBreaker = new ScBreaker();
 		scBreaker.handle();
 	}
