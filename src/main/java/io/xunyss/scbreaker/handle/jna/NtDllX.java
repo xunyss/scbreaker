@@ -1,4 +1,4 @@
-package io.xunyss.scbreaker.jna;
+package io.xunyss.scbreaker.handle.jna;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import com.sun.jna.win32.W32APIOptions;
 
 /**
  *
+ * @author XUNYSS
  */
 interface NtDllX extends NtDll {
 	
@@ -24,6 +25,25 @@ interface NtDllX extends NtDll {
 	 *
 	 */
 	NtDllX INSTANCE = Native.load("NtDll", NtDllX.class, W32APIOptions.DEFAULT_OPTIONS);
+	
+	
+	/**
+	 * type UNICODE_STRING
+	 */
+	class UNICODE_STRING extends Structure {
+		
+		public static final List<String> FIELDS = createFieldsOrder(
+				"Length", "MaximumLength", "Buffer");
+		
+		public short Length = 0;
+		public short MaximumLength = 0;
+		public Pointer Buffer;
+		
+		@Override
+		protected List<String> getFieldOrder() {
+			return FIELDS;
+		}
+	}
 	
 	
 	/**
@@ -153,24 +173,6 @@ interface NtDllX extends NtDll {
 		}
 	}
 	
-	/**
-	 *
-	 */
-	class UNICODE_STRING extends Structure {
-		
-		public static final List<String> FIELDS = createFieldsOrder(
-				"Length", "MaximumLength", "Buffer");
-		
-		public short Length = 0;
-		public short MaximumLength = 0;
-		public Pointer Buffer;
-		
-		@Override
-		protected List<String> getFieldOrder() {
-			return FIELDS;
-		}
-	}
-
 	
 	/**
 	 *
@@ -180,8 +182,12 @@ interface NtDllX extends NtDll {
 	 * @param returnLength
 	 * @return
 	 */
-	int NtQuerySystemInformation(int type, Pointer buffer, int bufferLength,
-								 WinDef.ULONGByReference returnLength);
+	int NtQuerySystemInformation(
+			int type,
+			Pointer buffer,
+			int bufferLength,
+			WinDef.ULONGByReference returnLength
+	);
 	
 	/**
 	 *
@@ -194,9 +200,15 @@ interface NtDllX extends NtDll {
 	 * @param options
 	 * @return
 	 */
-	int NtDuplicateObject(WinNT.HANDLE sourceProcessHandle, WinNT.HANDLE sourceHandle,
-						  WinNT.HANDLE targetProcessHandle, WinNT.HANDLEByReference targetHandle,
-						  int desiredAccess, int attributes, int options);
+	int NtDuplicateObject(
+			WinNT.HANDLE sourceProcessHandle,
+			WinNT.HANDLE sourceHandle,
+			WinNT.HANDLE targetProcessHandle,
+			WinNT.HANDLEByReference targetHandle,
+			int desiredAccess,
+			int attributes,
+			int options
+	);
 	
 	/**
 	 *
@@ -207,6 +219,11 @@ interface NtDllX extends NtDll {
 	 * @param returnLength
 	 * @return
 	 */
-	int NtQueryObject(WinNT.HANDLE objectHandle, int objectInformationClass, Pointer buffer, int bufferSize,
-					  WinDef.ULONGByReference returnLength);
+	int NtQueryObject(
+			WinNT.HANDLE objectHandle,
+			int objectInformationClass,
+			Pointer buffer,
+			int bufferSize,
+			WinDef.ULONGByReference returnLength
+	);
 }

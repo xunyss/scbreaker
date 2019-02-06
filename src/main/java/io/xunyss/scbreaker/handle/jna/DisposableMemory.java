@@ -1,9 +1,10 @@
-package io.xunyss.scbreaker.jna;
+package io.xunyss.scbreaker.handle.jna;
 
 import com.sun.jna.Memory;
 
 /**
  *
+ * @author XUNYSS
  */
 public class DisposableMemory extends Memory {
 	
