@@ -90,9 +90,11 @@ public class ScHandles extends ArrayList<ScHandles.ScHandle> {
 			}
 			
 			if (multiOpened) {
+				// error
 				scHandles.add(new ScHandle(pid, "multi files opened!"));
 			}
 			else {
+				// success
 				scHandles.add(new ScHandle(pid, processName, originFilepath, tempFilepath));
 			}
 		}
