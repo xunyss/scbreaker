@@ -56,7 +56,7 @@ public abstract class WinHandle {
 		
 		String processName, objectTypeName, objectName, handlePath;
 		int fileType;
-		boolean ignore = false;
+		boolean ignore = true;
 		for (int idx = 0; idx < shi.HandleCount; idx++) {
 			NtDllX.SYSTEM_HANDLE sh = shi.Handles[idx];
 			WinNT.HANDLE remoteHandle = new WinNT.HANDLE(new Pointer(sh.Handle));
@@ -88,17 +88,17 @@ public abstract class WinHandle {
 				//----------------------------------------------------------------------------------
 				// filtering: pname
 				//----------------------------------------------------------------------------------
-				if (pid == 0) {
+				if (pid == 0 && pnames.length > 0) {
 					for (String pname : pnames) {
-						if (!processName.endsWith(pname)) {
-							ignore = true;
+						if (processName.endsWith(pname)) {
+							ignore = false;
 							break;
 						}
 					}
 					if (ignore) {
-						ignore = false;
 						continue;
 					}
+					ignore = true;
 				}
 				
 				//----------------------------------------------------------------------------------
@@ -167,5 +167,22 @@ public abstract class WinHandle {
 		}
 		
 		return handles;
+	}
+	
+	/**
+	 *
+	 * @param pnames
+	 * @return
+	 */
+	public static List<Object[]> list(String... pnames) {
+		return list(0, pnames);
+	}
+	
+	/**
+	 *
+	 * @return
+	 */
+	public static List<Object[]> list() {
+		return list(0);
 	}
 }

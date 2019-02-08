@@ -4,10 +4,6 @@ import java.nio.charset.Charset;
 import java.util.List;
 
 import com.sun.jna.Platform;
-import com.sun.jna.platform.win32.Kernel32;
-import com.sun.jna.platform.win32.Kernel32Util;
-import com.sun.jna.platform.win32.User32;
-import com.sun.jna.platform.win32.WinNT;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -41,9 +37,15 @@ public class ScBreakerTest {
 	
 	@Test
 	public void listHandle() {
-		List<Object[]> hlist = WinHandle.list(0);
+		List<Object[]> hlist = WinHandle.list();
 		for (Object[] helem : hlist) {
 			System.out.println(ArrayUtils.toString(helem));
 		}
+	}
+	
+	@Test
+	public void handle() {
+		ScBreaker scBreaker = new ScBreaker();
+		scBreaker.handle();
 	}
 }
