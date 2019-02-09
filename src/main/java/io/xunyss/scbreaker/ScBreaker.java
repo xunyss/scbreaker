@@ -18,7 +18,7 @@ public class ScBreaker {
 	
 	
 	public static void main(String[] args) {
-		String prompt = "scbreaker # ";
+		String prompt = "scbreaker> ";
 		System.out.print(prompt);
 		String str = System.console().readLine();
 		if ("scan".equalsIgnoreCase(str)) {
