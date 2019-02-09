@@ -11,11 +11,19 @@ public class ScBreaker {
 	// TODO: (OS != Windows) 일 경우 exception 발생시킬 것!
 	
 	
-	private static final String[] SC_PROCESSES = {"WINWORD.EXE", "EXCEL.EXE"};
-	
-	
-	public void handle() {
-		ScHandles scHandles = ScHandles.snapshot(SC_PROCESSES);
+	public void availableList() {
+		ScHandles scHandles = ScHandles.snapshot();
 		System.out.println(scHandles);
+	}
+	
+	
+	public static void main(String[] args) {
+		String prompt = "scbreaker # ";
+		System.out.print(prompt);
+		String str = System.console().readLine();
+		if ("scan".equalsIgnoreCase(str)) {
+			ScHandles scHandles = ScHandles.snapshot();
+			System.out.println(scHandles);
+		}
 	}
 }

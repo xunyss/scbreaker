@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import io.xunyss.commons.io.FileUtils;
+import io.xunyss.scbreaker.ScFileTypes;
 import io.xunyss.scbreaker.handle.jna.WinHandle;
 
 /**
@@ -34,12 +35,11 @@ public class ScHandles extends ArrayList<ScHandles.ScHandle> {
 	
 	/**
 	 *
-	 * @param pnames
 	 * @return
 	 */
-	public static ScHandles snapshot(String[] pnames) {
+	public static ScHandles snapshot() {
 		List<Handle> handles = new ArrayList<>();
-		List<Object[]> winHandles = WinHandle.list(pnames);
+		List<Object[]> winHandles = WinHandle.list(ScFileTypes.getProcessNames());
 		for (Object[] handle : winHandles) {
 			handles.add(new Handle(
 					(int) handle[0],
@@ -70,7 +70,7 @@ public class ScHandles extends ArrayList<ScHandles.ScHandle> {
 						processName = handle.getProcessShortName();
 					}
 					// origin file path
-					if (handle.getHandlePath().endsWith(".xlsx")) {
+					if (ScFileTypes.isAllowedExt(processName, handle.getHandlePath())) {
 						String filename = handle.getHandleFilename();
 						if (!filename.startsWith("~$")) {
 							originFilepath = handle.getHandlePath();

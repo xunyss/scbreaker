@@ -46,6 +46,6 @@ public class ScBreakerTest {
 	@Test
 	public void handle() {
 		ScBreaker scBreaker = new ScBreaker();
-		scBreaker.handle();
+		scBreaker.availableList();
 	}
 }
