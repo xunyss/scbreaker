@@ -1,15 +1,14 @@
 package io.xunyss.scbreaker;
 
-import java.nio.charset.Charset;
-import java.util.List;
-
 import com.sun.jna.Platform;
-import org.junit.Assert;
-import org.junit.Test;
-
 import io.xunyss.commons.lang.ArrayUtils;
 import io.xunyss.scbreaker.handle.jna.WinHandle;
 import io.xunyss.scbreaker.handle.jna.WinProcess;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.nio.charset.Charset;
+import java.util.List;
 
 /**
  *

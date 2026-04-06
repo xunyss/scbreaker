@@ -1,8 +1,5 @@
 package io.xunyss.scbreaker.handle.jna;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
@@ -12,6 +9,9 @@ import com.sun.jna.platform.win32.WTypes;
 import com.sun.jna.platform.win32.Win32Exception;
 import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinNT;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *

@@ -1,13 +1,13 @@
 package io.xunyss.scbreaker.handle.jna;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.sun.jna.Native;
 import com.sun.jna.platform.win32.Kernel32;
 import com.sun.jna.platform.win32.Tlhelp32;
 import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinNT;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
